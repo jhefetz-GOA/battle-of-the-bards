@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+  --black: #000;
+  --dark-gray: #111;
+  --mid-gray: #1e1e1e;
+  --red: #c4161c;
+  --gold: #d4af37;
+  --white: #fff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--black);
+  border-bottom: 2px solid var(--red);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+}
+
+.nav img {
+  height: 55px;
+}
+
+.nav-links a {
+  margin-left: 30px;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1px;
+  font-size: 20px;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  background: var(--red);
+  left: 0;
+  bottom: -6px;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.hero {
+  background: radial-gradient(circle at top, #1e1e1e, #000);
+  text-align: center;
+  padding: 80px 40px;
+}
+
+.hero-logo {
+  max-width: 400px;
+  margin-bottom: 30px;
+}
+
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 64px;
+  margin-bottom: 40px;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.countdown span {
+  font-size: 64px;
+  font-family: 'Bebas Neue', sans-serif;
+  color: var(--gold);
+}
+
+.countdown label {
+  display: block;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.event-details {
+  font-size: 18px;
+  letter-spacing: 2px;
+  color: var(--red);
+}
+
+/* ===== RESULTS PAGE ===== */
+.results-block {
+  background: var(--dark-gray);
+  padding: 30px;
+  margin-bottom: 30px;
+  border-left: 5px solid var(--red);
+}
+
+.results-block h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.champion {
+  color: var(--gold);
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* ===== TITLE HISTORY PAGE ===== */
+.history-entry {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid var(--mid-gray);
+}
+
+.year {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  color: var(--gold);
+  width: 120px;
+}
+
+.name {
+  font-size: 22px;
+}
+
+/* ===== ABOUT PAGE ===== */
+section ul {
+  list-style: square;
+  margin-left: 20px;
+}
+
+section ul li {
+  margin-bottom: 10px;
+}
