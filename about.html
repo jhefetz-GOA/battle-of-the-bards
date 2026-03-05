@@ -2,13 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Battle of the Bards — About</title>
+  <title>Battle of the Bards — Title History</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- FONTS -->
   <link href="https://fonts.googleapis.com/css2?family=Brawler&family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
+
+/* ===============================
+   GLOBAL CROWD BACKGROUND LAYER
+   =============================== */
+
+body {
+  position: relative;
+  background: #000;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.85), #000),
+    url("https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=2000&q=80");
+
+  background-size: cover;
+  background-position: center;
+}
+
+
     :root {
       --red: #c1121f;
       --gold: #d4af37;
@@ -108,17 +133,12 @@
     /* ================= PAGE WRAPPER ================= */
 
     .page-wrapper {
-      min-height: 100vh;
-      padding-top: 120px; /* nav clearance */
-      padding-bottom: 120px;
+  min-height: 100vh;
+  padding-top: 30px;
+  padding-bottom: 60px;
+  background: transparent; /* 🔑 IMPORTANT */
+}
 
-      background:
-        linear-gradient(to bottom, rgba(0,0,0,0.85), #000),
-        url("https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=2000&q=80");
-
-      background-size: cover;
-      background-position: center;
-    }
 
     .page-content {
       max-width: 1000px;
@@ -127,14 +147,14 @@
       border-radius: 20px;
 
       background:
-        linear-gradient(
-          135deg,
-          rgba(212,175,55,0.08),
-          rgba(0,0,0,0.95)
-        );
+    linear-gradient(
+      135deg,
+      rgba(212,175,55,0.08),
+      rgba(0,0,0,0.75)
+    );
 
-      border: 2px solid rgba(212,175,55,0.25);
-    }
+  border: 2px solid rgba(212,175,55,0.25);
+}
 
     .page-title {
       font-family: 'Brawler', serif;
@@ -150,6 +170,47 @@
       margin-bottom: 40px;
     }
 
+/* ===============================
+   SMALL PAGE HERO (ABOUT)
+   =============================== */
+
+.page-hero-small {
+  display: flex;
+  align-items: center;          /* vertical centering between logo & text */
+  justify-content: center;      /* centers the whole hero on the page */
+  gap: 36px;                    /* space between logo and text */
+
+  text-align: left;             /* prevent text centering weirdness */
+  padding: 80px 20px 100px;
+}
+
+
+.page-hero-logo {
+  width: 200px;
+  max-width: 60%;
+  margin-bottom: 24px;
+display: block;
+  margin: 0;  
+filter:
+    drop-shadow(0 0 10px rgba(255,255,255,0.35))
+    drop-shadow(0 0 24px rgba(255,255,255,0.2));
+}
+
+.page-hero-title {
+  font-family: 'Brawler', serif;
+  font-size: 3.2rem;
+  letter-spacing: 6px;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .page-hero-small {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+
     /* ================= FOOTER ================= */
 
     footer {
@@ -160,6 +221,11 @@
       font-size: 0.9rem;
       text-align: center;
     }
+
+footer {
+  margin-top: 160px;
+}
+
 
   </style>
 </head>
@@ -188,17 +254,124 @@
   <audio id="theme" src="theme.mp3" loop></audio>
 
   <!-- ================= CONTENT ================= -->
-  <div class="page-wrapper">
+ 
+<div class="page-hero-small">
+  <img src="logo.png" alt="Battle of the Bards Logo" class="page-hero-logo">
+  <h1 class="page-hero-title">ABOUT</h1>
+</div>
+
+
+ <div class="page-wrapper">
     <div class="page-content">
-      <h1 class="page-title">ABOUT</h1>
+      
 
-      <p class="page-intro">
-        A description of Battle of the Bards and its rules.
-      </p>
+      
+<!-- ================= WHAT IS BOTB ================= -->
 
-      <!-- PAGE-SPECIFIC CONTENT GOES HERE -->
-    </div>
-  </div>
+<div class="about-section">
+
+  <h1 class="about-heading">What Is Battle of the Bards?</h1>
+
+  <p>
+    In case you’re not already aware of it, <strong>BATTLE OF THE BARDS</strong>
+    is a March Madness–style slam poetry competition.
+  </p>
+
+  <p>
+    Participants will be “battling” over who has the best poetry portfolio.
+    Rounds are single elimination – a poet performs a poem, their opponent performs,
+    and the audience votes on who should advance to the next round.
+  </p>
+
+  <p>
+    Once a poet moves on, their poem is no longer eligible for future usage,
+    so strategy is crucial when selecting and ordering poems.
+  </p>
+
+</div>
+
+
+<!-- ================= HOW IT WORKS ================= -->
+
+<div class="about-section">
+
+  <h2 class="about-heading">How the Tournament Works</h2>
+
+  <ul class="about-list">
+    <li>12 poets enter the bracket.</li>
+    <li>Matchups are head-to-head.</li>
+    <li>The audience determines who advances.</li>
+    <li>Each poem can only be performed once.</li>
+    <li>One poet remains — and earns the belt.</li>
+  </ul>
+
+  <p>
+    The format is simple. The pressure is not.
+  </p>
+
+</div>
+
+
+<!-- ================= WHY IT MATTERS ================= -->
+
+<div class="about-section">
+
+  <h2 class="about-heading">Why It Matters</h2>
+
+  <p>
+    Each year, the Battle of the Bards tournament is amazing,
+    and it is the talk of the school for several days.
+  </p>
+
+  <p>
+    So many of your peers, and even teachers and parents,
+    express their admiration for the poets brave enough to perform.
+  </p>
+
+  <p>
+    I know this year’s tournament will be another stellar event,
+    so I strongly encourage everyone to participate…
+    but if you won’t participate, please do attend as many dates as you can!
+  </p>
+
+</div>
+
+
+<!-- ================= RULES ================= -->
+
+<div class="about-section">
+
+  <h2 class="about-heading">Rules of Participation and Poetry Content</h2>
+
+  <h3 class="rules-subheading">Performance:</h3>
+
+  <ul class="about-list">
+    <li>Poets DO NOT need to recite their poems from memory.</li>
+    <li>The poet MAY NOT use props, costumes, pre-recorded/taped music, or musical instruments while performing. It’s just you and the mic on stage. However, you ARE allowed to sing, beatbox, or make other sounds with your body during your performance.</li>
+    <li>The delivery of the piece is just as important as the content of the poem. Use your voice and your whole body to perform!</li>
+  </ul>
+
+  <h3 class="rules-subheading">Content:</h3>
+
+  <ul class="about-list">
+    <li>All poems must be original creations and must be written and performed by the participating poet. You cannot perform someone else’s poem, nor can someone else perform your poem.</li>
+    <li>Referencing (or sampling) and/or parodying other poems may be permitted, so long as the poem remains clearly distinct from the sampled or parodied material.</li>
+    <li>AI-generated poems are not allowed.</li>
+    <li>Poems from past years’ tournaments are ineligible for use.</li>
+    <li>Once a poem is performed, it is unavailable for future rounds in the same tournament. Organize and strategize your portfolio!</li>
+    <li>Poems can be of any length or structure. There is no specific time limit or required format.</li>
+    <li>Rhyming is permitted, but a good rule of thumb is to be strategic when doing so to avoid sounding like a Hallmark card.</li>
+    <li>No roasts or insult poems about anyone – students or faculty.</li>
+    <li>Poems can mention people indirectly, but carefully and with assistance from a Language Arts teacher. In these cases, aim to have your poem be inspired by the individual(s) but without making it clear to the audience to whom you are referring. Battle of the Bards is not a venue for publicly shaming, humiliating, attacking, bullying, or retaliating against others.</li>
+    <li>Cursing and “controversial” content are both permitted, but must be done with care and purpose. Language Arts teachers can help you determine which linguistic, stylistic, or content decisions are purposeful. (“Controversial” content includes curse words and references to sex, drugs, anatomy, assault, or other delicate subject matter.)</li>
+    <li>However, anger, upset, and frustration are legitimate emotions to express in your poem. Just be creative in how you do it.</li>
+    <li>If you’re unsure if a piece crosses the line, assume it does or comes uncomfortably close. Use your common sense and don’t be a jerk. If you’re still unsure, ask Mr. Hefetz.</li>
+    <li>Trigger warnings are not required. A general disclaimer will be provided at the start of the competition, and audience members are free to quietly exit the space if they feel uncomfortable.</li>
+  </ul>
+
+</div>
+
+
 
   <!-- ================= FOOTER ================= -->
   <footer>
