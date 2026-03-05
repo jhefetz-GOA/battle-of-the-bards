@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Battle of the Bards — Current Card</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Brawler&family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --red: #c1121f;
+      --gold: #d4af37;
+      --gray: #9ca3af;
+      --black: #000;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Oswald', sans-serif;
+      color: white;
+      background: #000;
+    }
+
+    /* ================= NAV ================= */
+
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 64px;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(6px);
+      z-index: 1000;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .audio-toggle {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.7);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .audio-toggle:hover {
+      color: white;
+      border-color: var(--gold);
+    }
+
+    .audio-toggle.on {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .menu-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .menu-links a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 1rem;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .menu-links a:hover {
+      color: white;
+    }
+
+    .menu-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+      width: 0;
+      background: linear-gradient(90deg, red, gold);
+      transition: width 0.3s ease;
+    }
+
+    .menu-links a:hover::after {
+      width: 100%;
+    }
+
+    /* ================= PAGE WRAPPER ================= */
+
+    .page-wrapper {
+      min-height: 100vh;
+      padding-top: 30px; /* nav clearance */
+      padding-bottom: 60px;
+
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.85), #000),
+        url("https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=2000&q=80");
+
+      background-size: cover;
+      background-position: center;
+    }
+
+    .page-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px;
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(212,175,55,0.08),
+          rgba(0,0,0,0.95)
+        );
+
+      border: 2px solid rgba(212,175,55,0.25);
+    }
+
+    .page-title {
+      font-family: 'Brawler', serif;
+      font-size: 3.5rem;
+      letter-spacing: 4px;
+      margin-bottom: 20px;
+    }
+
+    .page-intro {
+      color: var(--gray);
+      max-width: 700px;
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+    }
+
+
+/* ===============================
+   SMALL PAGE HERO (TITLE HISTORY)
+   =============================== */
+
+.page-hero-small {
+  display: flex;
+  align-items: center;          /* vertical centering between logo & text */
+  justify-content: center;      /* centers the whole hero on the page */
+  gap: 36px;                    /* space between logo and text */
+
+  text-align: left;             /* prevent text centering weirdness */
+  padding: 80px 20px 24px;
+}
+
+
+.page-hero-logo {
+  width: 400px;
+  max-width: 60%;
+  margin-bottom: 10px;
+display: block;
+  margin: 0;  
+filter:
+    drop-shadow(0 0 10px rgba(255,255,255,0.35))
+    drop-shadow(0 0 24px rgba(255,255,255,0.2));
+}
+
+.page-hero-title {
+  font-family: 'Brawler', serif;
+  font-size: 3.2rem;
+  letter-spacing: 6px;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .page-hero-small {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+
+
+
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      width: 100%;
+      padding: 20px;
+      background: #000;
+      border-top: 4px solid var(--red);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+
+/* ===============================
+   CURRENT CARD — BRACKET LAYOUT
+   =============================== */
+
+.bracket {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* 🔑 now 7 columns */
+  gap: 36px;
+  margin-top: 10px;
+}
+
+
+/* ROUND COLUMN */
+.round {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+/* ROUND LABEL */
+.round-title {
+  font-family: 'Brawler', serif;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  color: var(--gray);
+}
+
+/* NARROW SPOTLIGHT CARD */
+.card {
+  width: 160px;
+  padding: 18px 14px;
+  border-radius: 16px;
+  text-align: center;
+  font-family: 'Brawler', serif;
+  font-size: 1.05rem;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(212,175,55,0.18) 0%,
+      rgba(0,0,0,0.95) 45%,
+      rgba(140,20,20,0.35) 100%
+    );
+
+  border: 2px solid rgba(212,175,55,0.45);
+}
+
+/* CENTER CHAMPION CARD */
+.card.champion {
+  width: 180px;
+  font-size: 1.3rem;
+  box-shadow: 0 0 40px rgba(212,175,55,0.7);
+}
+
+/* ===============================
+   CURRENT CARD — FULL BRACKET UPGRADE
+   =============================== */
+
+/* CARD BASE */
+.card {
+  width: 150px;
+  padding: 16px 12px;
+  border-radius: 16px;
+  text-align: center;
+  position: relative;
+  font-family: 'Brawler', serif;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(212,175,55,0.18) 0%,
+      rgba(0,0,0,0.95) 45%,
+      rgba(140,20,20,0.35) 100%
+    );
+
+  border: 2px solid rgba(212,175,55,0.45);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* PHOTO */
+.card-photo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.card-photo img {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--gold);
+  transition: transform 0.35s ease;
+}
+
+/* NAME */
+.card-name {
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+/* HOVER INTERACTION */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 12px 28px rgba(0,0,0,0.6),
+    0 0 24px rgba(212,175,55,0.35);
+}
+
+.card:hover .card-photo img {
+  transform: scale(1.08);
+}
+
+
+/* FINALS COLUMN EMPHASIS */
+.round.finals .card {
+  width: 170px;
+}
+
+.card.champion {
+  margin-top: 18px;
+  font-size: 1.3rem;
+  box-shadow: 0 0 50px rgba(212,175,55,0.8);
+}
+
+/* SCROLL REVEAL */
+.round {
+  opacity: 0.35;
+  transform: translateY(40px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.round.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* MOBILE STACK */
+@media (max-width: 900px) {
+  .bracket {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .round {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card::after {
+    display: none;
+  }
+}
+
+/* ===============================
+   CURRENT CARD — CLEAN BRACKET
+   =============================== */
+
+.bracket {
+  display: grid;
+  grid-template-columns: 1fr 220px 1fr;
+  gap: 40px;
+  margin-top: 80px;
+}
+
+/* SIDES */
+.side {
+  display: flex;
+  gap: 40px;
+}
+
+.side.left {
+  justify-content: flex-end;
+}
+
+.side.right {
+  justify-content: flex-start;
+}
+
+.side.center {
+  justify-content: center;
+}
+
+/* ROUNDS */
+.round {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  align-items: center;
+}
+
+.round-title {
+  font-family: 'Brawler', serif;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  color: var(--gray);
+}
+
+/* MATCHUP (PAIRING) */
+.match {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+}
+
+/* CARD (SMALLER) */
+.card {
+  width: 130px;
+  padding: 10px;
+  border-radius: 14px;
+  text-align: center;
+  font-family: 'Brawler', serif;
+  font-size: 0.9rem;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(212,175,55,0.18),
+      rgba(0,0,0,0.9),
+      rgba(140,20,20,0.35)
+    );
+  border: 2px solid rgba(212,175,55,0.4);
+  position: relative;
+}
+
+
+/* NO CONNECTOR ON FINAL COLUMN */
+.side.center .card::after {
+  display: none;
+}
+
+/* CENTER WINNERS */
+.card.winner {
+  margin: 22px 0;
+}
+
+/* CHAMPION */
+.card.champion {
+  margin-top: 20px;
+  width: 150px;
+  font-size: 1.1rem;
+  box-shadow: 0 0 40px rgba(212,175,55,0.75);
+}
+
+/* ===============================
+   CURRENT CARD — TRUE BRACKET TREE
+   =============================== */
+
+.bracket {
+  display: grid;
+  grid-template-columns: 1fr 220px 1fr;
+  gap: 60px;
+  margin-top: 80px;
+}
+
+/* SIDES */
+.side {
+  display: flex;
+  gap: 50px;
+}
+
+.side.left { justify-content: flex-end; }
+.side.right { justify-content: flex-start; }
+.side.center { justify-content: center; }
+
+/* ROUNDS */
+.round {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  align-items: center;
+}
+
+/* MATCHUP */
+.match {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+
+/* CARD */
+.card {
+  width: 120px;
+  padding: 10px;
+  border-radius: 14px;
+  text-align: center;
+  font-family: 'Brawler', serif;
+  font-size: 0.85rem;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(212,175,55,0.18),
+      rgba(0,0,0,0.9),
+      rgba(140,20,20,0.35)
+    );
+
+  border: 2px solid rgba(212,175,55,0.4);
+  position: relative;
+}
+
+
+/* FINAL FOUR ALIGNMENT */
+.round.ff {
+  justify-content: space-between;
+}
+
+.ff-pair {
+  height: 92px;
+  display: flex;
+  align-items: center;
+}
+
+/* FINALS */
+.card.champion {
+  margin-top: 24px;
+  width: 150px;
+  font-size: 1.1rem;
+  box-shadow: 0 0 40px rgba(212,175,55,0.75);
+}
+
+
+
+
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= NAV ================= -->
+  <nav class="top-nav">
+    <div class="nav-left">
+      <button id="audioToggle" class="audio-toggle" type="button">
+        THEME: OFF
+      </button>
+    </div>
+
+    <div class="menu-links">
+      <a href="index.html">Home</a>
+      <a href="current.html">Current Card</a>
+      <a href="history.html">Title History</a>
+      <a href="about.html">About</a>
+<a href="merch.html">Merch</a>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSew-2a-qB0qGl7PwoJFLVzpYuFbAur6QdzdcpjnEWaY0Yfo3w/viewform">Nuts 'N' Raisins</a>
+    </div>
+  </nav>
+
+  <!-- ================= AUDIO ================= -->
+  <audio id="theme" src="theme.mp3" loop></audio>
+
+  <!-- ================= CONTENT ================= -->
+  <div class="page-wrapper">
+
+<div class="page-hero-small">
+  <img src="logo2026.png" alt="Battle of the Bards Logo" class="page-hero-logo">
+  <h1 class="page-hero-title">CURRENT CARD</h1>
+</div>
+
+
+<div class="bracket">
+
+  <!-- LEFT SIDE -->
+  <div class="side left">
+
+    <!-- QUARTERFINALS -->
+    <div class="round qf">
+      <div class="round-title">QUARTERFINALS</div>
+
+      <div class="match">
+        <div class="card"><div class="card-name">Student A</div></div>
+        <div class="card"><div class="card-name">Student B</div></div>
+      </div>
+
+      <div class="match">
+        <div class="card"><div class="card-name">Student C</div></div>
+        <div class="card"><div class="card-name">Student D</div></div>
+      </div>
+
+      <div class="match">
+        <div class="card"><div class="card-name">Student E</div></div>
+        <div class="card"><div class="card-name">Student F</div></div>
+      </div>
+    </div>
+
+    <!-- SEMIFINALS -->
+    <div class="round sf">
+      <div class="round-title">SEMIFINALS</div>
+
+      <div class="card winner">Winner A/B</div>
+      <div class="card winner">Winner C/D</div>
+      <div class="card winner">Winner E/F</div>
+    </div>
+
+    <!-- FINAL FOUR -->
+    <div class="round ff">
+      <div class="round-title">FINAL FOUR</div>
+
+      <div class="card winner">Left Finalist 1</div>
+      <div class="card winner">Left Finalist 2</div>
+    </div>
+
+  </div>
+
+  <!-- CENTER -->
+  <div class="side center">
+    <div class="round finals">
+      <div class="round-title">FINALS</div>
+
+      <div class="card winner">Finalist A</div>
+      <div class="card winner">Finalist B</div>
+
+      <div class="card champion">CHAMPION</div>
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="side right">
+
+    <!-- FINAL FOUR -->
+    <div class="round ff">
+      <div class="round-title">FINAL FOUR</div>
+
+      <div class="card winner">Right Finalist 1</div>
+      <div class="card winner">Right Finalist 2</div>
+    </div>
+
+    <!-- SEMIFINALS -->
+    <div class="round sf">
+      <div class="round-title">SEMIFINALS</div>
+
+      <div class="card winner">Winner G/H</div>
+      <div class="card winner">Winner I/J</div>
+      <div class="card winner">Winner K/L</div>
+    </div>
+
+    <!-- QUARTERFINALS -->
+    <div class="round qf">
+      <div class="round-title">QUARTERFINALS</div>
+
+      <div class="match">
+        <div class="card"><div class="card-name">Student G</div></div>
+        <div class="card"><div class="card-name">Student H</div></div>
+      </div>
+
+      <div class="match">
+        <div class="card"><div class="card-name">Student I</div></div>
+        <div class="card"><div class="card-name">Student J</div></div>
+      </div>
+
+      <div class="match">
+        <div class="card"><div class="card-name">Student K</div></div>
+        <div class="card"><div class="card-name">Student L</div></div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <span style="color: rgba(255,255,255,0.65);">
+      © Battle of the Bards — Legacy Is Earned
+    </span>
+  </footer>
+
+  <!-- ================= AUDIO SCRIPT ================= -->
+  <script>
+    const audio = document.getElementById("theme");
+    const btn = document.getElementById("audioToggle");
+    let isOn = false;
+
+    btn.addEventListener("click", async () => {
+      if (!isOn) {
+        audio.volume = 0.05;
+        await audio.play();
+        btn.textContent = "THEME: ON";
+        btn.classList.add("on");
+        isOn = true;
+      } else {
+        audio.pause();
+        btn.textContent = "THEME: OFF";
+        btn.classList.remove("on");
+        isOn = false;
+      }
+    });
+  </script>
+
+<script>
+  const rounds = document.querySelectorAll(".round");
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  rounds.forEach(r => observer.observe(r));
+</script>
+
+
+<script>
+  const rounds = document.querySelectorAll(".round");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add("is-visible");
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.25 });
+
+  rounds.forEach(r => observer.observe(r));
+</script>
+
+</script>
+
+</body>
+</html>
