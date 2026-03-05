@@ -1,41 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>About | Battle of the Bards</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <title>Battle of the Bards — About</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Brawler&family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --red: #c1121f;
+      --gold: #d4af37;
+      --gray: #9ca3af;
+      --black: #000;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Oswald', sans-serif;
+      color: white;
+      background: #000;
+    }
+
+    /* ================= NAV ================= */
+
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 64px;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(6px);
+      z-index: 1000;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .audio-toggle {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.7);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .audio-toggle:hover {
+      color: white;
+      border-color: var(--gold);
+    }
+
+    .audio-toggle.on {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .menu-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .menu-links a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 1rem;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .menu-links a:hover {
+      color: white;
+    }
+
+    .menu-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+      width: 0;
+      background: linear-gradient(90deg, red, gold);
+      transition: width 0.3s ease;
+    }
+
+    .menu-links a:hover::after {
+      width: 100%;
+    }
+
+    /* ================= PAGE WRAPPER ================= */
+
+    .page-wrapper {
+      min-height: 100vh;
+      padding-top: 120px; /* nav clearance */
+      padding-bottom: 120px;
+
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.85), #000),
+        url("https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=2000&q=80");
+
+      background-size: cover;
+      background-position: center;
+    }
+
+    .page-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px;
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(212,175,55,0.08),
+          rgba(0,0,0,0.95)
+        );
+
+      border: 2px solid rgba(212,175,55,0.25);
+    }
+
+    .page-title {
+      font-family: 'Brawler', serif;
+      font-size: 3.5rem;
+      letter-spacing: 4px;
+      margin-bottom: 20px;
+    }
+
+    .page-intro {
+      color: var(--gray);
+      max-width: 700px;
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      width: 100%;
+      padding: 20px;
+      background: #000;
+      border-top: 4px solid var(--red);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+  </style>
 </head>
+
 <body>
 
-<header>
-  <div class="nav">
-    <img src="assets/mainlogo.png" alt="Battle of the Bards">
-    <div class="nav-links">
+  <!-- ================= NAV ================= -->
+  <nav class="top-nav">
+    <div class="nav-left">
+      <button id="audioToggle" class="audio-toggle" type="button">
+        THEME: OFF
+      </button>
+    </div>
+
+    <div class="menu-links">
       <a href="index.html">Home</a>
-      <a href="results.html">Results</a>
+      <a href="current.html">Current Card</a>
       <a href="history.html">Title History</a>
       <a href="about.html">About</a>
+<a href="merch.html">Merch</a>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSew-2a-qB0qGl7PwoJFLVzpYuFbAur6QdzdcpjnEWaY0Yfo3w/viewform">Nuts 'N' Raisins</a>
+    </div>
+  </nav>
+
+  <!-- ================= AUDIO ================= -->
+  <audio id="theme" src="theme.mp3" loop></audio>
+
+  <!-- ================= CONTENT ================= -->
+  <div class="page-wrapper">
+    <div class="page-content">
+      <h1 class="page-title">ABOUT</h1>
+
+      <p class="page-intro">
+        A description of Battle of the Bards and its rules.
+      </p>
+
+      <!-- PAGE-SPECIFIC CONTENT GOES HERE -->
     </div>
   </div>
-</header>
 
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <span style="color: rgba(255,255,255,0.65);">
+      © Battle of the Bards — Legacy Is Earned
+    </span>
+  </footer>
 
-<section>
-  <h2 class="section-title">WHAT IS BATTLE OF THE BARDS?</h2>
-  <p>
-    Battle of the Bards is an annual poetry tournament where competitors
-    face off in live, judged rounds. Every word matters. Every stanza hits.
-  </p>
-</section>
+  <!-- ================= AUDIO SCRIPT ================= -->
+  <script>
+    const audio = document.getElementById("theme");
+    const btn = document.getElementById("audioToggle");
+    let isOn = false;
 
-<section>
-  <h2 class="section-title">HOW IT WORKS</h2>
-  <ul>
-    <li>Single-elimination tournament</li>
-    <li>Timed performances</li>
-    <li>Judged on content, delivery, and impact</li>
-  </ul>
-</section>
+    btn.addEventListener("click", async () => {
+      if (!isOn) {
+        audio.volume = 0.05;
+        await audio.play();
+        btn.textContent = "THEME: ON";
+        btn.classList.add("on");
+        isOn = true;
+      } else {
+        audio.pause();
+        btn.textContent = "THEME: OFF";
+        btn.classList.remove("on");
+        isOn = false;
+      }
+    });
+  </script>
 
 </body>
 </html>
