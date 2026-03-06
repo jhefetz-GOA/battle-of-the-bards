@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Battle of the Bards — Title History</title>
+  <title>Battle of the Bards — About</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- FONTS -->
@@ -181,7 +181,7 @@ body::before {
   gap: 36px;                    /* space between logo and text */
 
   text-align: left;             /* prevent text centering weirdness */
-  padding: 80px 20px 100px;
+  padding: 80px 20px 20px;
 }
 
 
@@ -210,6 +210,54 @@ filter:
   }
 }
 
+ /* ================= ABOUT HEADING STYLING ================= */
+
+.about-heading {
+  font-family: 'Brawler', serif;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+  color: var(--gold);
+  position: relative;
+  padding-left: 18px;
+}
+
+/* subtle red accent bar */
+.about-heading::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 6px;
+  height: 75%;
+  background: linear-gradient(to bottom, var(--red), var(--gold));
+  border-radius: 3px;
+}
+
+.about-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 20px 0;
+}
+
+.about-list li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+
+.about-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 8px;
+  height: 8px;
+  background: var(--red);
+  border-radius: 50%;
+}
+
 
     /* ================= FOOTER ================= */
 
@@ -223,7 +271,7 @@ filter:
     }
 
 footer {
-  margin-top: 160px;
+  margin-top: 80px;
 }
 
 
@@ -256,8 +304,8 @@ footer {
   <!-- ================= CONTENT ================= -->
  
 <div class="page-hero-small">
-  <img src="logo.png" alt="Battle of the Bards Logo" class="page-hero-logo">
-  <h1 class="page-hero-title">ABOUT</h1>
+    <h1 class="page-hero-title">ABOUT</h1>
+<img src="logo.png" alt="Battle of the Bards Logo" class="page-hero-logo">
 </div>
 
 
@@ -273,7 +321,7 @@ footer {
   <h1 class="about-heading">What Is Battle of the Bards?</h1>
 
   <p>
-    In case you’re not already aware of it, <strong>BATTLE OF THE BARDS</strong>
+    <strong>BATTLE OF THE BARDS</strong>
     is a March Madness–style slam poetry competition.
   </p>
 
@@ -369,6 +417,7 @@ footer {
     <li>Trigger warnings are not required. A general disclaimer will be provided at the start of the competition, and audience members are free to quietly exit the space if they feel uncomfortable.</li>
   </ul>
 
+</div>
 </div>
 
 
