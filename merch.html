@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Battle of the Bards — Merch</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Brawler&family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+
+/* ===============================
+   GLOBAL CROWD BACKGROUND LAYER
+   =============================== */
+
+body {
+  position: relative;
+  background: #000;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.85), #000),
+    url("https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=2000&q=80");
+
+  background-size: cover;
+  background-position: center;
+}
+
+
+    :root {
+      --red: #c1121f;
+      --gold: #d4af37;
+      --gray: #9ca3af;
+      --black: #000;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Oswald', sans-serif;
+      color: white;
+      background: #000;
+    }
+
+    /* ================= NAV ================= */
+
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 64px;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(6px);
+      z-index: 1000;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .audio-toggle {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.7);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .audio-toggle:hover {
+      color: white;
+      border-color: var(--gold);
+    }
+
+    .audio-toggle.on {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .menu-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .menu-links a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 1rem;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .menu-links a:hover {
+      color: white;
+    }
+
+    .menu-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+      width: 0;
+      background: linear-gradient(90deg, red, gold);
+      transition: width 0.3s ease;
+    }
+
+    .menu-links a:hover::after {
+      width: 100%;
+    }
+
+    /* ================= PAGE WRAPPER ================= */
+
+    .page-wrapper {
+  min-height: 100vh;
+  padding-top: 30px;
+  padding-bottom: 60px;
+  background: transparent; /* 🔑 IMPORTANT */
+}
+
+
+    .page-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px;
+      border-radius: 20px;
+
+      background:
+    linear-gradient(
+      135deg,
+      rgba(212,175,55,0.08),
+      rgba(0,0,0,0.75)
+    );
+
+  border: 2px solid rgba(212,175,55,0.25);
+}
+
+    .page-title {
+      font-family: 'Brawler', serif;
+      font-size: 3.5rem;
+      letter-spacing: 4px;
+      margin-bottom: 20px;
+    }
+
+    .page-intro {
+      color: var(--gray);
+      max-width: 700px;
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+    }
+
+/* ===============================
+   SMALL PAGE HERO (MERCH)
+   =============================== */
+
+.page-hero-small {
+  display: flex;
+  align-items: center;          /* vertical centering between logo & text */
+  justify-content: center;      /* centers the whole hero on the page */
+  gap: 36px;                    /* space between logo and text */
+
+  text-align: left;             /* prevent text centering weirdness */
+  padding: 80px 20px 20px;
+}
+
+
+.page-hero-logo {
+  width: 200px;
+  max-width: 60%;
+  margin-bottom: 24px;
+display: block;
+  margin: 0;  
+filter:
+    drop-shadow(0 0 10px rgba(255,255,255,0.35))
+    drop-shadow(0 0 24px rgba(255,255,255,0.2));
+}
+
+.page-hero-title {
+  font-family: 'Brawler', serif;
+  font-size: 3.2rem;
+  letter-spacing: 6px;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .page-hero-small {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+ /* ================= MERCH HEADING STYLING ================= */
+
+.about-heading {
+  font-family: 'Brawler', serif;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+  color: var(--gold);
+  position: relative;
+  padding-left: 18px;
+}
+
+/* subtle red accent bar */
+.about-heading::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 6px;
+  height: 75%;
+  background: linear-gradient(to bottom, var(--red), var(--gold));
+  border-radius: 3px;
+}
+
+.about-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 20px 0;
+}
+
+.about-list li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+
+.about-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 8px;
+  height: 8px;
+  background: var(--red);
+  border-radius: 50%;
+}
+
+
+/* ================= COMING SOON PANEL ================= */
+
+    .coming-soon-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 60px;
+      padding: 40px 20px;
+    }
+
+    .coming-soon-box {
+      max-width: 600px;
+      text-align: center;
+      padding: 50px 40px;
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(212,175,55,0.12),
+          rgba(0,0,0,0.9),
+          rgba(140,20,20,0.25)
+        );
+
+      border: 2px solid rgba(212,175,55,0.35);
+    }
+
+    .coming-title {
+      font-family: 'Brawler', serif;
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 20px;
+      letter-spacing: 3px;
+    }
+
+    .coming-text {
+      color: var(--gray);
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      width: 100%;
+      padding: 20px;
+      background: #000;
+      border-top: 4px solid var(--red);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+footer {
+  margin-top: 80px;
+}
+
+
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= NAV ================= -->
+  <nav class="top-nav">
+    <div class="nav-left">
+      <button id="audioToggle" class="audio-toggle" type="button">
+        THEME: OFF
+      </button>
+    </div>
+
+    <div class="menu-links">
+      <a href="index.html">Home</a>
+      <a href="current.html">Current Card</a>
+      <a href="history.html">Title History</a>
+<a href="prompts.html">Prompts</a>
+      <a href="about.html">About</a>
+<a href="merch.html">Merch</a>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSew-2a-qB0qGl7PwoJFLVzpYuFbAur6QdzdcpjnEWaY0Yfo3w/viewform">Nuts 'N' Raisins</a>
+    </div>
+  </nav>
+
+  <!-- ================= AUDIO ================= -->
+  <audio id="theme" src="theme.mp3" loop></audio>
+
+  <!-- ================= CONTENT ================= -->
+ 
+ <!-- HERO -->
+  <div class="page-hero-small">
+    <img src="logo.png" alt="Battle of the Bards Logo" class="page-hero-logo">
+    <h1 class="page-hero-title">MERCH</h1>
+  </div>
+
+  <!-- COMING SOON -->
+  <div class="coming-soon-wrapper">
+    <div class="coming-soon-box">
+      <div class="coming-title">COMING SOON</div>
+      <div class="coming-text">
+        Official Battle of the Bards merchandise is on the way.<br><br>
+        Stay tuned for championship gear, event apparel, and more.
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span style="color: rgba(255,255,255,0.65);">
+      © Battle of the Bards — Legacy Is Earned
+    </span>
+  </footer>
+
+  <!-- ================= AUDIO SCRIPT ================= -->
+  <script>
+    const audio = document.getElementById("theme");
+    const btn = document.getElementById("audioToggle");
+    let isOn = false;
+
+    btn.addEventListener("click", async () => {
+      if (!isOn) {
+        audio.volume = 0.05;
+        await audio.play();
+        btn.textContent = "THEME: ON";
+        btn.classList.add("on");
+        isOn = true;
+      } else {
+        audio.pause();
+        btn.textContent = "THEME: OFF";
+        btn.classList.remove("on");
+        isOn = false;
+      }
+    });
+  </script>
+
+</body>
+</html>
