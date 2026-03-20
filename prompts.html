@@ -275,6 +275,43 @@ footer {
 }
 
 
+/* ===============================
+   PROMPTS GRID
+   =============================== */
+
+.prompts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+/* PROMPT CARD */
+.prompt-card {
+  padding: 22px;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(212,175,55,0.12),
+      rgba(0,0,0,0.9),
+      rgba(140,20,20,0.25)
+    );
+
+  border: 2px solid rgba(212,175,55,0.3);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* SUBTLE HOVER */
+.prompt-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
   </style>
 </head>
 
@@ -319,10 +356,113 @@ footer {
 
 <div class="about-section">
 
-  <h1 class="about-heading">Header goes here</h1>
+  <h1 class="about-heading">You could write about...</h1>
 
   <p>
-Content goes here. Repeat as necessary.
+
+<div class="prompts-grid">
+
+  <div class="prompt-card">What I really want to say is _________________.</div>
+
+  <div class="prompt-card">Please don’t take my _________________</div>
+
+  <div class="prompt-card">
+    Wander your local supermarket (recommended: pick one where you don’t have to cross a picket line) and find a flavor you think is messed up. Orange vanilla cola? Watermelon sandwich cookies? Cucumbers? Whatever: describe it. Now explain.
+  </div>
+
+  <div class="prompt-card">
+    Use your favorite word of the moment to prompt a poem, but don’t use that word in the actual poem
+  </div>
+
+  <div class="prompt-card">
+    A box comes to your door; you open it, and something floods out, in great quantity, too much for you or your living space. Do you try to save yourself? Hold back the tide? Salvage the contents of the box?
+  </div>
+
+  <div class="prompt-card">Write an ad to get the roommate you think you deserve.</div>
+
+  <div class="prompt-card">
+    Write the details of a complex trap to catch a human pest: a CEO, a telemarketer, or an online predator, for example.
+  </div>
+
+  <div class="prompt-card">What horrors will future investigators discover in your own ruins?</div>
+
+  <div class="prompt-card">
+    Consider a time when you thought you had made some real self-improvement, maybe enough to tell somebody about. Did it go as well as you dreamed?
+  </div>
+
+  <div class="prompt-card">Explain a scar you don’t remember getting.</div>
+
+  <div class="prompt-card">
+    Imagine another alert you really wish your phone would give you to help you avoid disaster.
+  </div>
+
+  <div class="prompt-card">
+    FIRST: Write down your most recent nightmare. If you can’t remember it, write down an anxiety dream, or a recurring nightmare you can remember. THEN: Imagine you are on a dinner date with the physical manifestation of this nightmare. Where are you? What is being served? Don’t end the poem before dinner is over (whether you get dessert is up to you).
+  </div>
+
+  <div class="prompt-card">
+    Grab the closest book. Go to page 29. Write down 10 words that catch your eye. Use 7 of words in a poem.
+  </div>
+
+  <div class="prompt-card">
+    Write a poem that is really a love letter to an old flame. To make sure it’s doesn’t slip into sappy, make sure one or more of these words are in the poem: dung beetle, politician, nuclear, exoskeleton, oceanography, pompadour, toilet.
+  </div>
+
+  <div class="prompt-card">What you're looking for in a true love: Maybe call it "Unicorn"</div>
+
+  <div class="prompt-card">Going through or watching a friend go through a breakup</div>
+
+  <div class="prompt-card">Going through or watching a friend go through a divorce</div>
+
+  <div class="prompt-card">Sibling, family member or friend with mental illness</div>
+
+  <div class="prompt-card">
+    Death: This is a loaded topic, but pretty much everyone has some experience with a person they know dying. It's important to let those emotions out, and spoken word is a perfect forum for it.
+  </div>
+
+  <div class="prompt-card">First kiss</div>
+
+  <div class="prompt-card">
+    Being in a metaphorical prison (a prison of the mind - some situation in which you feel trapped and held captive against your will)
+  </div>
+
+  <div class="prompt-card">
+    Guilt: What are the things inside of you that are truly ugly and you just can't let out? What are your secrets that you truly have guilt about?
+  </div>
+
+  <div class="prompt-card">An awful dating experience</div>
+
+  <div class="prompt-card">A wonderful date</div>
+
+  <div class="prompt-card">
+    Relive a conversation that stuck with you through the years
+  </div>
+
+  <div class="prompt-card">
+    Ever have someone speak to you in a way that you really don't appreciate, but you couldn't say anything at the time?
+  </div>
+
+  <div class="prompt-card">
+    What is the most special place you hold in your heart?
+  </div>
+
+  <div class="prompt-card">
+    Betrayal. Has a friend or lover ever stabbed you in the back? Conversely, have you ever totally screwed someone over?
+  </div>
+
+  <div class="prompt-card">
+    Culture change / culture shock. How have things changed for you over the course of your life?
+  </div>
+
+  <div class="prompt-card">
+    Literally anything else! Get creative!
+  </div>
+
+</div>
+
+
+
+
   </p>
 
  
