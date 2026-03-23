@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Battle of the Bards!</title>
+<title>Battle of the Bards</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Brawler&family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
@@ -140,9 +140,11 @@ body{
   background-position:center;
   display:flex;
   flex-direction:column;
-  justify-content:center;
+  justify-content:flex-start;
   align-items:center;
-  text-align:center;
+  padding-top: 120px;
+padding-bottom: 60px;
+min-height: auto;
 }
 
 .hero img {
@@ -488,7 +490,42 @@ color: #7a7a7a; /* soft neutral gray */
 }
 
 
+/* ===============================
+   SIGNUP SPOTLIGHT OVERRIDES
+   =============================== */
 
+/* Remove circular photo styling */
+.signup-logo img {
+  width: 120px;
+  max-width: 100%;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Center the whole layout better */
+.champion-card {
+  align-items: center; /* keeps vertical balance */
+}
+
+/* Right side content column */
+.signup-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Ensure description centers */
+.signup-content .champion-description {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Center button cleanly */
+.signup-cta-button {
+  display: inline-block;
+}
 </style>
 </head>
 
@@ -505,8 +542,8 @@ color: #7a7a7a; /* soft neutral gray */
     <a href="index.html">Home</a>
     <a href="current.html">Current Card</a>
     <a href="history.html">Title History</a>
-  <a href="prompts.html">Prompts</a>
-    <a href="about.html">About</a>
+<a href="prompts.html">Prompts</a>  
+<a href="about.html">About</a>
 <a href="merch.html">Merch</a>
 <a href="https://docs.google.com/forms/d/e/1FAIpQLSew-2a-qB0qGl7PwoJFLVzpYuFbAur6QdzdcpjnEWaY0Yfo3w/viewform">Nuts 'N' Raisins</a>
   </div>
@@ -543,12 +580,43 @@ color: #7a7a7a; /* soft neutral gray */
     <div class="label">SEC</div>
   </div>
 </div>
+
+<section class="signup-spotlight-section">
+<div class="champion-header">
+      <span class="defending">WHAT ARE YOU WAITING FOR?</span>
+      <h2>SIGN UP</h2>
+      <div class="champion-underline"></div>
+    </div>
+
+  <div class="champion-card">
+  <div class="signup-logo">
+    <img src="logo2026.png" alt="Current Logo">
+  </div>
+
+  <div class="signup-content">
+<center>    
+<p class="champion-description">
+      Bring your words. 
+<br>
+Bring your voice.
+      <br>
+      Take the mic.
+<br>
+Compete for the belt.
+    </p>
+
+    <strong><a href="https://docs.google.com/forms/d/e/1FAIpQLSfhfNPR3wG8foi--vne0sfiV_u98oB1Gv4n-TfNIvrwk1imuQ/viewform"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="signup-cta-button">
+      ENTER THE TOURNAMENT
+    </a></strong>
+</center>
+  </div>
+
 </div>
 
 
-
-
-<section>
   <section class="champion-section">
   <div class="champion-spotlight">
 
@@ -560,7 +628,7 @@ color: #7a7a7a; /* soft neutral gray */
 
     <div class="champion-card">
       <div class="champion-photo">
-        <img src="champion25.jpg" alt="Reigning Champion">
+        <img src="champion.jpg" alt="Reigning Champion">
         <div class="champion-badge">★</div>
       </div>
 
@@ -659,7 +727,3 @@ btn.addEventListener("click", async () => {
 
 </body>
 </html>
-
-
-
-
