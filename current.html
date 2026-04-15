@@ -208,183 +208,21 @@ filter:
 
 
 /* ===============================
-   CURRENT CARD — BRACKET LAYOUT
+   CURRENT CARD — CONSOLIDATED BRACKET CSS
    =============================== */
 
 .bracket {
   display: grid;
-  grid-template-columns: repeat(7, 1fr); /* 🔑 now 7 columns */
-  gap: 36px;
-  margin-top: 10px;
-}
-
-
-/* ROUND COLUMN */
-.round {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 28px;
-}
-
-/* ROUND LABEL */
-.round-title {
-  font-family: 'Brawler', serif;
-  font-size: 1.2rem;
-  letter-spacing: 2px;
-  margin-bottom: 12px;
-  color: var(--gray);
-}
-
-/* NARROW SPOTLIGHT CARD */
-.card {
-  width: 160px;
-  padding: 18px 14px;
-  border-radius: 16px;
-  text-align: center;
-  font-family: 'Brawler', serif;
-  font-size: 1.05rem;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(212,175,55,0.18) 0%,
-      rgba(0,0,0,0.95) 45%,
-      rgba(140,20,20,0.35) 100%
-    );
-
-  border: 2px solid rgba(212,175,55,0.45);
-}
-
-/* CENTER CHAMPION CARD */
-.card.champion {
-  width: 180px;
-  font-size: 1.3rem;
-  box-shadow: 0 0 40px rgba(212,175,55,0.7);
-}
-
-/* ===============================
-   CURRENT CARD — FULL BRACKET UPGRADE
-   =============================== */
-
-/* CARD BASE */
-.card {
-  width: 150px;
-  padding: 16px 12px;
-  border-radius: 16px;
-  text-align: center;
-  position: relative;
-  font-family: 'Brawler', serif;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(212,175,55,0.18) 0%,
-      rgba(0,0,0,0.95) 45%,
-      rgba(140,20,20,0.35) 100%
-    );
-
-  border: 2px solid rgba(212,175,55,0.45);
-
-  transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease;
-}
-
-/* PHOTO */
-.card-photo {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-  overflow: hidden;
-}
-
-.card-photo img {
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid var(--gold);
-  transition: transform 0.35s ease;
-}
-
-/* NAME */
-.card-name {
-  font-size: 1rem;
-  line-height: 1.2;
-}
-
-/* HOVER INTERACTION */
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow:
-    0 12px 28px rgba(0,0,0,0.6),
-    0 0 24px rgba(212,175,55,0.35);
-}
-
-.card:hover .card-photo img {
-  transform: scale(1.08);
-}
-
-
-/* FINALS COLUMN EMPHASIS */
-.round.finals .card {
-  width: 170px;
-}
-
-.card.champion {
-  margin-top: 18px;
-  font-size: 1.3rem;
-  box-shadow: 0 0 50px rgba(212,175,55,0.8);
-}
-
-/* SCROLL REVEAL */
-.round {
-  opacity: 0.35;
-  transform: translateY(40px);
-  transition:
-    opacity 0.8s ease,
-    transform 0.8s ease;
-}
-
-.round.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* MOBILE STACK */
-@media (max-width: 900px) {
-  .bracket {
-    grid-template-columns: 1fr;
-    gap: 60px;
-  }
-
-  .round {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .card::after {
-    display: none;
-  }
-}
-
-/* ===============================
-   CURRENT CARD — CLEAN BRACKET
-   =============================== */
-
-.bracket {
-  display: grid;
-  grid-template-columns: 1fr 220px 1fr;
-  gap: 40px;
-  margin-top: 80px;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: auto 1fr; /* 🔑 labels row + content row */
+  gap: 20px 36px;
+  margin-top: 40px;
 }
 
 /* SIDES */
 .side {
   display: flex;
-  gap: 40px;
+  gap: 50px;
 }
 
 .side.left {
@@ -403,8 +241,19 @@ filter:
 .round {
   display: flex;
   flex-direction: column;
-  gap: 28px;
   align-items: center;
+  gap: 36px;
+
+  opacity: 0.35;
+  transform: translateY(40px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.round.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .round-title {
@@ -412,93 +261,18 @@ filter:
   font-size: 0.9rem;
   letter-spacing: 2px;
   color: var(--gray);
-}
-
-/* MATCHUP (PAIRING) */
-.match {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  position: relative;
-}
-
-/* CARD (SMALLER) */
-.card {
-  width: 130px;
-  padding: 10px;
-  border-radius: 14px;
   text-align: center;
-  font-family: 'Brawler', serif;
-  font-size: 0.9rem;
-  background:
-    linear-gradient(
-      135deg,
-      rgba(212,175,55,0.18),
-      rgba(0,0,0,0.9),
-      rgba(140,20,20,0.35)
-    );
-  border: 2px solid rgba(212,175,55,0.4);
-  position: relative;
 }
 
-
-/* NO CONNECTOR ON FINAL COLUMN */
-.side.center .card::after {
-  display: none;
-}
-
-/* CENTER WINNERS */
-.card.winner {
-  margin: 22px 0;
-}
-
-/* CHAMPION */
-.card.champion {
-  margin-top: 20px;
-  width: 150px;
-  font-size: 1.1rem;
-  box-shadow: 0 0 40px rgba(212,175,55,0.75);
-}
-
-/* ===============================
-   CURRENT CARD — TRUE BRACKET TREE
-   =============================== */
-
-.bracket {
-  display: grid;
-  grid-template-columns: 1fr 220px 1fr;
-  gap: 60px;
-  margin-top: 80px;
-}
-
-/* SIDES */
-.side {
-  display: flex;
-  gap: 50px;
-}
-
-.side.left { justify-content: flex-end; }
-.side.right { justify-content: flex-start; }
-.side.center { justify-content: center; }
-
-/* ROUNDS */
-.round {
-  display: flex;
-  flex-direction: column;
-  gap: 36px;
-  align-items: center;
-}
-
-/* MATCHUP */
+/* MATCHUP GROUP */
 .match {
-  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 14px;
   align-items: center;
+  gap: 14px;
 }
 
-/* CARD */
+/* CARDS */
 .card {
   width: 120px;
   padding: 10px;
@@ -506,6 +280,7 @@ filter:
   text-align: center;
   font-family: 'Brawler', serif;
   font-size: 0.85rem;
+  position: relative;
 
   background:
     linear-gradient(
@@ -516,22 +291,34 @@ filter:
     );
 
   border: 2px solid rgba(212,175,55,0.4);
-  position: relative;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
-
-/* FINAL FOUR ALIGNMENT */
-.round.ff {
-  justify-content: space-between;
+.card-name {
+  font-size: 1rem;
+  line-height: 1.2;
 }
 
-.ff-pair {
-  height: 92px;
-  display: flex;
-  align-items: center;
+/* Hover */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 12px 28px rgba(0,0,0,0.6),
+    0 0 24px rgba(212,175,55,0.35);
 }
 
-/* FINALS */
+/* Winner cards */
+.card.winner {
+  margin: 0;
+}
+
+/* Finals / Champion */
+.round.finals .card {
+  width: 150px;
+}
+
 .card.champion {
   margin-top: 24px;
   width: 150px;
@@ -539,10 +326,81 @@ filter:
   box-shadow: 0 0 40px rgba(212,175,55,0.75);
 }
 
+/* LEFT SIDE 8-STUDENT EXPANSION */
+.side.left .round.qf {
+  gap: 22px;
+}
+
+.side.left .round.left-expanded {
+  justify-content: center;
+  gap: 52px;
+}
+
+.side.left .round.left-expanded .match {
+  gap: 18px;
+  align-items: center;
+}
+
+.side.left .round.left-expanded-final {
+  justify-content: center;
+}
+
+.side.left .round.left-expanded-final .match {
+  gap: 22px;
+  align-items: center;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .bracket {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .side {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 28px;
+  }
+
+  .round {
+    gap: 24px;
+  }
+
+  .card {
+    width: 130px;
+  }
+}
+
+/* ===============================
+   SYMMETRICAL BRACKET ALIGNMENT
+   =============================== */
+
+/* Base spacing for first round */
+.round.qf {
+  gap: 24px;
+}
+
+/* Second round (pairs → winners) */
+.round.sf {
+  gap: 72px;
+  justify-content: center;
+}
+
+/* Third round (2 → 1 pairing) */
+.round.ff {
+  gap: 120px;
+  justify-content: center;
+}
+
+/* Finals stays centered */
+.round.finals {
+  justify-content: center;
+}
+  
 
 
-
-  </style>
+</style>
 </head>
 
 <body>
@@ -580,103 +438,101 @@ filter:
 
 <div class="bracket">
 
-  <!-- LEFT SIDE -->
-  <div class="side left">
+  <!-- TOP ROW: ROUND LABELS -->
+  <div class="round-title">QUARTERFINALS</div>
+  <div class="round-title">SEMIFINALS</div>
+  <div class="round-title">FINAL FOUR</div>
+  <div class="round-title">FINALS</div>
+  <div class="round-title">FINAL FOUR</div>
+  <div class="round-title">SEMIFINALS</div>
+  <div class="round-title">QUARTERFINALS</div>
 
-    <!-- QUARTERFINALS -->
-    <div class="round qf">
-      <div class="round-title">QUARTERFINALS</div>
-
-      <div class="match">
-        <div class="card"><div class="card-name">Student A</div></div>
-        <div class="card"><div class="card-name">Student B</div></div>
-      </div>
-
-      <div class="match">
-        <div class="card"><div class="card-name">Student C</div></div>
-        <div class="card"><div class="card-name">Student D</div></div>
-      </div>
-
-      <div class="match">
-        <div class="card"><div class="card-name">Student E</div></div>
-        <div class="card"><div class="card-name">Student F</div></div>
-      </div>
+  <!-- LEFT QUARTERFINALS -->
+  <div class="round qf">
+    <div class="match">
+      <div class="card"><div class="card-name">Anabelle</div></div>
+      <div class="card"><div class="card-name">Jordana</div></div>
     </div>
 
-    <!-- SEMIFINALS -->
-    <div class="round sf">
-      <div class="round-title">SEMIFINALS</div>
-
-      <div class="card winner">Winner A/B</div>
-      <div class="card winner">Winner C/D</div>
-      <div class="card winner">Winner E/F</div>
+    <div class="match">
+      <div class="card"><div class="card-name">Emily</div></div>
+      <div class="card"><div class="card-name">Perri</div></div>
     </div>
 
-    <!-- FINAL FOUR -->
-    <div class="round ff">
-      <div class="round-title">FINAL FOUR</div>
-
-      <div class="card winner">Left Finalist 1</div>
-      <div class="card winner">Left Finalist 2</div>
+    <div class="match">
+      <div class="card"><div class="card-name">Logan</div></div>
+      <div class="card"><div class="card-name">Marlo</div></div>
     </div>
 
-  </div>
-
-  <!-- CENTER -->
-  <div class="side center">
-    <div class="round finals">
-      <div class="round-title">FINALS</div>
-
-      <div class="card winner">Finalist A</div>
-      <div class="card winner">Finalist B</div>
-
-      <div class="card champion">CHAMPION</div>
+    <div class="match">
+      <div class="card"><div class="card-name">Leo (c)</div></div>
+      <div class="card"><div class="card-name">Caleb</div></div>
     </div>
   </div>
 
-  <!-- RIGHT SIDE -->
-  <div class="side right">
-
-    <!-- FINAL FOUR -->
-    <div class="round ff">
-      <div class="round-title">FINAL FOUR</div>
-
-      <div class="card winner">Right Finalist 1</div>
-      <div class="card winner">Right Finalist 2</div>
+  <!-- LEFT SEMIFINALS -->
+  <div class="round sf left-expanded">
+    <div class="match">
+      <div class="card winner"><div class="card-name">Winner A/B</div></div>
+      <div class="card winner"><div class="card-name">Winner C/D</div></div>
     </div>
 
-    <!-- SEMIFINALS -->
-    <div class="round sf">
-      <div class="round-title">SEMIFINALS</div>
+    <div class="match">
+      <div class="card winner"><div class="card-name">Winner E/F</div></div>
+      <div class="card winner"><div class="card-name">Winner G/H</div></div>
+    </div>
+  </div>
 
-      <div class="card winner">Winner G/H</div>
-      <div class="card winner">Winner I/J</div>
-      <div class="card winner">Winner K/L</div>
+  <!-- LEFT FINAL -->
+  <div class="round ff left-expanded-final">
+    <div class="match">
+      <div class="card winner"><div class="card-name">Winner AB/CD</div></div>
+      <div class="card winner"><div class="card-name">Winner EF/GH</div></div>
+    </div>
+  </div>
+
+  <!-- CENTER FINALS -->
+  <div class="round finals">
+    <div class="card winner"><div class="card-name">Finalist A</div></div>
+    <div class="card winner"><div class="card-name">Finalist B</div></div>
+    <div class="card champion"><div class="card-name">CHAMPION</div></div>
+  </div>
+
+  <!-- RIGHT FINAL FOUR -->
+<div class="round ff">
+  <div class="match">
+    <div class="card winner"><div class="card-name">Right Finalist 1</div></div>
+    <div class="card winner"><div class="card-name">Right Finalist 2</div></div>
+  </div>
+</div>
+
+  <!-- RIGHT SEMIFINALS -->
+  <div class="round sf">
+    <div class="card winner"><div class="card-name">Winner G/H</div></div>
+    <div class="card winner"><div class="card-name">Winner I/J</div></div>
+    <div class="card winner"><div class="card-name">Winner K/L</div></div>
+  </div>
+
+  <!-- RIGHT QUARTERFINALS -->
+  <div class="round qf">
+    <div class="match">
+      <div class="card"><div class="card-name">Violet</div></div>
+      <div class="card"><div class="card-name">Gilad</div></div>
     </div>
 
-    <!-- QUARTERFINALS -->
-    <div class="round qf">
-      <div class="round-title">QUARTERFINALS</div>
-
-      <div class="match">
-        <div class="card"><div class="card-name">Student G</div></div>
-        <div class="card"><div class="card-name">Student H</div></div>
-      </div>
-
-      <div class="match">
-        <div class="card"><div class="card-name">Student I</div></div>
-        <div class="card"><div class="card-name">Student J</div></div>
-      </div>
-
-      <div class="match">
-        <div class="card"><div class="card-name">Student K</div></div>
-        <div class="card"><div class="card-name">Student L</div></div>
-      </div>
+    <div class="match">
+      <div class="card"><div class="card-name">Hanna</div></div>
+      <div class="card"><div class="card-name">Liora</div></div>
     </div>
 
+    <div class="match">
+      <div class="card"><div class="card-name">Noah</div></div>
+      <div class="card"><div class="card-name">Niko</div></div>
+    </div>
   </div>
 
 </div>
+
 
 
 
